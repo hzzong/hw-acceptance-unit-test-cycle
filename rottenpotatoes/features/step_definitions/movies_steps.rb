@@ -23,3 +23,9 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+  
+Then /^the director of "([^"]+)" should be "([^"]+)"/ do |title, director|
+  # Make sure get the right director of the current movie
+  this_director = Movie.find_by_title(title).director
+  expect(this_director == director)
+end 
